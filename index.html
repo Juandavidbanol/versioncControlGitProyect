@@ -12,15 +12,28 @@
         h1 {
             color: #2c3e50;
         }
+        p {
+            color: #555;
+        }
     </style>
 </head>
 <body>
     <h1 id="welcome-message"></h1>
+    <p id="current-date"></p>
 
     <script>
         const projectName = "Proyecto Control de Versiones";
+
         const welcomeMessage = "¡Bienvenido al " + projectName + "!";
         document.getElementById("welcome-message").innerText = welcomeMessage;
+
+        function getCurrentDate() {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return today.toLocaleDateString('es-ES', options);
+        }
+
+        document.getElementById("current-date").innerText = "Fecha actual: " + getCurrentDate();
     </script>
 </body>
 </html>
