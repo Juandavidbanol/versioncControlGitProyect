@@ -15,25 +15,50 @@
         p {
             color: #555;
         }
+        #color-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1 id="welcome-message"></h1>
     <p id="current-date"></p>
+    <button id="color-button">Hazme clic</button>
 
     <script>
         const projectName = "Proyecto Control de Versiones";
 
+        // Mensaje de bienvenida (HU1)
         const welcomeMessage = "¡Bienvenido al " + projectName + "!";
         document.getElementById("welcome-message").innerText = welcomeMessage;
 
+        // Fecha actual (HU3)
         function getCurrentDate() {
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return today.toLocaleDateString('es-ES', options);
         }
-
         document.getElementById("current-date").innerText = "Fecha actual: " + getCurrentDate();
+
+        // HU4 – botón que cambia de color
+        const button = document.getElementById("color-button");
+        let isBlue = true;
+
+        button.addEventListener("click", () => {
+            if (isBlue) {
+                button.style.backgroundColor = "#e74c3c";
+            } else {
+                button.style.backgroundColor = "#3498db";
+            }
+            isBlue = !isBlue;
+        });
     </script>
 </body>
 </html>
