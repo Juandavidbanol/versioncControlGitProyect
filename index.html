@@ -25,12 +25,30 @@
             cursor: pointer;
             margin-top: 20px;
         }
+        form {
+            margin-top: 30px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1 id="welcome-message"></h1>
     <p id="current-date"></p>
     <button id="color-button">Hazme clic</button>
+
+    <!-- HU7: Formulario con validación mínima -->
+    <form id="simple-form">
+        <input type="text" id="name" placeholder="Ingresa tu nombre" required>
+        <input type="submit" value="Enviar">
+    </form>
 
     <script>
         const projectName = "Proyecto Control de Versiones";
@@ -65,8 +83,20 @@
             const timestamp = new Date().toLocaleTimeString();
             console.log(`[${timestamp}] ${mensaje}`);
         }
-
         logEvent("Aplicación iniciada");
+
+        // HU7 – Validación mínima de formulario
+        const form = document.getElementById("simple-form");
+        form.addEventListener("submit", (event) => {
+            const nameInput = document.getElementById("name").value.trim();
+            if (!nameInput) {
+                alert("Por favor, ingresa tu nombre antes de enviar.");
+                event.preventDefault();
+                logEvent("Intento de envío vacío en el formulario");
+            } else {
+                logEvent("Formulario enviado correctamente");
+            }
+        });
     </script>
 </body>
 </html>
