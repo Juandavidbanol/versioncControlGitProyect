@@ -35,11 +35,11 @@
     <script>
         const projectName = "Proyecto Control de Versiones";
 
-        // Mensaje de bienvenida (HU1)
+        // HU1 – Mensaje de bienvenida
         const welcomeMessage = "¡Bienvenido al " + projectName + "!";
         document.getElementById("welcome-message").innerText = welcomeMessage;
 
-        // Fecha actual (HU3)
+        // HU3 – Fecha actual
         function getCurrentDate() {
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -47,10 +47,9 @@
         }
         document.getElementById("current-date").innerText = "Fecha actual: " + getCurrentDate();
 
-        // HU4 – botón que cambia de color
+        // HU4 – Botón que cambia de color
         const button = document.getElementById("color-button");
         let isBlue = true;
-
         button.addEventListener("click", () => {
             if (isBlue) {
                 button.style.backgroundColor = "#e74c3c";
@@ -58,7 +57,16 @@
                 button.style.backgroundColor = "#3498db";
             }
             isBlue = !isBlue;
+            logEvent("Botón clickeado");
         });
+
+        // HU5 – Registrar log simple en consola
+        function logEvent(mensaje) {
+            const timestamp = new Date().toLocaleTimeString();
+            console.log(`[${timestamp}] ${mensaje}`);
+        }
+
+        logEvent("Aplicación iniciada");
     </script>
 </body>
 </html>
